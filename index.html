@@ -23,6 +23,7 @@
       padding: 0;
       margin: 0;
       background-color: var(--Almost_White);
+      overflow-x: hidden;
     }
 
     p{
@@ -30,13 +31,16 @@
     }
 
 
-    /* .navigation{
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      align-items: baseline;
-      padding: 0rem 1rem;
-    } */
+    /*Navigation bar*/
 
+
+ .navigation{
+      margin: auto 1rem;
+    }
+
+    .nav__burger{
+      display: none;
+    }
     .nav__items, .nav__dropdown__items{
       list-style: none;
     }
@@ -44,7 +48,7 @@
     .nav__items{
       display: flex;
       align-items: baseline;
-      gap:5rem;
+      gap: 2rem;
     }
 
     .nav__item{
@@ -63,11 +67,16 @@
     .nav__header{
       color: var(--Almost_Black);
       font-size: 2rem;
+      font-weight: 700;
+      margin-right: 2.5rem;
     }
 
     .nav__dropdown__items {
       display: none;
-   
+      border-radius: 15px;
+      -webkit-box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
+      -moz-box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
+      box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
     }
 
     
@@ -102,33 +111,37 @@
       display: none;
     }
 
-    .nav__item--left{
-      justify-content: flex-start;
-    }
 
-    .nav__item--right{
-      justify-content: flex-end;
-    }
-
-    .grid--right .nav__item:nth-child(2){
+    .nav__item:last-child{
       border: 2px solid black;
       border-radius: 15px;
       padding: 0.8rem 1.5rem;
     }
 
     .nav__dropdown__items{
-      margin: 1rem 0;
+      margin: 0.5rem 0;
       padding: 0;
       background-color: white;
     }
 
+    .nav__dropdown__item{
+      color:var(--Medium_Gray);
+    }
+
+
+    /*content*/
 
     .content{
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 18rem;
-      margin-top: 2.5rem;
+      justify-content: space-around;
+      column-gap: 2rem;
+      margin-top: 4.5rem;
+      max-width: 100%;
+    }
+
+    .content__left::after{
+      content: "";
     }
 
     .content__heading{
@@ -163,20 +176,159 @@
       gap: 2rem;
     }
 
-    @media (max-width:650px){
-      .navigation{
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: baseline;
-      padding: 0rem 1rem;
-    }
+    @media only screen and (max-width:850px){
 
-    .nav__items{
-      display: flex;
-      flex-direction: row;
-      align-items: baseline;
-      gap:5rem;
-    }
+    /*Navigation bar*/
+
+
+      .navigation{
+            margin: auto 1rem;
+            display: none;
+          }
+
+      .nav__burger{
+        display: block;
+      }
+
+      .nav__items, .nav__dropdown__items{
+        list-style: none;
+      }
+
+      .nav__items{
+        align-items: baseline;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .nav__item{
+        color: var(--Medium_Gray);
+        cursor: pointer;
+      }
+
+      .nav__item:hover{
+        color: var(--Almost_Black);
+      }
+
+      .nav__item--right{
+        margin: 0px;
+      }
+
+      .nav__header{
+        color: var(--Almost_Black);
+        font-size: 2rem;
+        font-weight: 700;
+        margin-right: 2.5rem;
+      }
+
+      .nav__dropdown__items {
+        display: none;
+        border-radius: 15px;
+        -webkit-box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
+        box-shadow: 10px 6px 104px -40px rgba(0,0,0,0.75);
+      }
+
+      
+      .nav__item:hover >.nav__dropdown__items{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content:baseline;
+        align-items: flex-start;
+        padding: 1.2rem;
+      }
+
+      .nav__dropdown__item svg{
+        margin-right: 15px;
+      }
+
+      
+      .nav__dropdown > .arrow_down{
+        display: inline-block;
+      }
+
+      .nav__dropdown > .arrow_up{
+        display: none;
+      }
+
+      .nav__dropdown:hover > .arrow_up{
+        display: inline-block;
+      }
+
+      .nav__dropdown:hover > .arrow_down{
+        display: none;
+      }
+
+
+      .nav__item:last-child{
+        border: 2px solid black;
+        border-radius: 15px;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .nav__dropdown__items{
+        margin: 0.5rem 0;
+        padding: 0;
+        background-color: white;
+      }
+
+      .nav__dropdown__item{
+        color:var(--Medium_Gray);
+      }
+
+
+      /*content*/
+
+      .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: auto;
+        margin-top: auto;
+      }
+
+      .content__left{
+        text-align: center;
+        order: 2;
+        padding: 2rem;
+      }
+      .content__right{
+        order: 1;
+      }
+      .content__heading{
+        font-size: 2.5rem;
+      }
+
+      .content button{
+        background-color: var(--Almost_Black);
+        color: var(--Almost_White);
+        padding: 1rem 2rem;
+        border: 1px solid black;
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+
+      .content button:hover{
+        color: var(--Almost_Black);
+        background-color: var(--Almost_White);
+      }
+
+      .content__desc{
+        color: var(--Medium_Gray);
+        padding: 0 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .content .partners{
+        display: flex;
+        margin-top: 5rem;
+        gap: auto;
+      }
     }
   </style>
 </head>
@@ -184,10 +336,12 @@
 
   <main>
     <nav class="navigation">
-     
           <ul class="nav__items nav__item--left">
-            <li class="nav__item">
-              <h3 class="nav__header">snap</h3>
+            <li class="nav__item nav__header">
+             snap
+            </li>
+            <li class="nav__item nav__burger">
+              <svg width="32" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#151515" fill-rule="evenodd"><path d="M0 0h32v2H0zM0 8h32v2H0zM0 16h32v2H0z"/></g></svg>
             </li>
             <li class="nav__item nav__dropdown">
               Features
@@ -231,7 +385,7 @@
      
             <li class="nav__item nav__item--right">Login</li>
             
-            <li class="nav__item ">Register</li>
+            <li class="nav__item">Register</li>
           </ul>
           
         </div>
@@ -241,8 +395,9 @@
     </nav>
 
     <div class="content">
+
       <div class="content__left">
-        <h1 class="content__heading">Make <br> remote work</h1>
+        <h1 class="content__heading">Make remote work</h1>
         <p class="content__desc">Get your team in sync, no matter your location. <br> 
           Streamline processes. create team rituals, and <br> watch productivity soar.
         </p>
@@ -258,10 +413,12 @@
       <div class="content__right">
         <picture>
           <source media="(max-width: 650px)" srcset="./images/image-hero-mobile.png">
-          <img src="./images/image-hero-desktop.png" style="width: 500px;" alt="">
+          <img src="./images/image-hero-desktop.png" style="width: 520px;" alt="">
         </picture>
       </div>
     </div>
+
+    
   </main>
 
   
